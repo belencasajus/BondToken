@@ -4,21 +4,22 @@ El prototipo, desplegado en la red de pruebas Sepolia, confirma la viabilidad t�
 
 
 GUÍA DE DESPLIEGUE PASO A PASO
+
 A continuación, se detallan los pasos necesarios para poner en marcha la plataforma en un entorno local. Este ejemplo está probado en Windows PowerShell, pero en Linux o macOS los comandos son similares.
-5.5.1. Compilar el contrato
+- Compilar el contrato
 Desde la carpeta raíz del proyecto (en este caso, con nombre “tokenizacion-bono”), se ejecuta:
 cd tokenizacion-bono
 npx hardhat compile
 
 Obteniendo: “Compiled 1 Solidity file successfully (evm target: paris)”
 
-5.5.2. Iniciar el frontend con hot-reload
+- Iniciar el frontend con hot-reload
 cd frontend
 npm install        # sólo la primera vez
 npm run dev
 
 Vite arrancará la aplicación en servidor local en el puerto 5173 (http://localhost:5173) y recargará automáticamente al cambiar el código.
-5.5.3. Levantar el backend y el planificador de cupones
+- Levantar el backend y el planificador de cupones
 
 cd ../backend
 npm install        # sólo la primera vez
@@ -30,7 +31,7 @@ MongoDB conectado
 MongoDB conectado para scheduler
 MongoDB conectado para DvP listener
 Suscrito dinámicamente a DvP de <dirección>
-5.5.4. Configurar variables de entorno
+- Configurar variables de entorno
 Para el correcto funcionamiento de todos los componentes de la plataforma, es imprescindible definir una serie de parámetros en un fichero de configuración situado en la raíz del proyecto (tokenizacion-bono/.env). Este archivo debe incluir las credenciales necesarias para la comunicación con la base de datos, el nodo Ethereum y el servicio de almacenamiento de IPFS, sin necesidad de exponer ninguna clave privada de usuario. El contenido mínimo es el siguiente:
 MONGO_URI=“mongodb://127.0.0.1:27017/bonosdb”
 API_URL=“https://eth-sepolia.g.alchemy.com/v2/<API_KEY_ALCHEMY>”
@@ -41,28 +42,6 @@ PORT=3000
 •	API_URL: endpoint de Alchemy para la red Sepolia, utilizado por Ethers.js para emitir y escuchar transacciones.
 •	PINATA_JWT: token de autenticación de Pinata, que permite fijar los documentos PDF en IPFS sin requerir credenciales privadas.
 •	PORT: puerto en el que el servidor Express atenderá las peticiones REST.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
